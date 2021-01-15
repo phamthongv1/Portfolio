@@ -28,7 +28,7 @@ body {
   background: url("../img/background-header.png");
   background-size: cover;
   padding: 1.2rem 5rem 0;
-  box-shadow: 0px 9px 10px -4px rgba(0,0,0,0.75);
+  z-index: 2;
 }
 nav {
   display: flex;
@@ -50,6 +50,7 @@ nav {
   }
   .nav-links .active{
     background: rgba(68, 68, 68, 0.6);
+
   }
 .nav-links li a{
     font-size: 1.2rem;
@@ -107,6 +108,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 }
 .slider{
     background: var(--shadow);
@@ -169,4 +171,115 @@ nav {
     color: white;
 }
 
-/* MAIN */
+/* QUOTATIONS */
+
+.quotations {
+  padding: 1.2rem 10rem 0;
+  z-index: 1;
+}
+
+.container-quotations{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-quotations .number-quotations{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-quotations .number-quotations .number{
+  /* color:var(--shadow); */
+  border: 1px solid var(--shadow);
+  padding: 0.5rem 0.9rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.container-quotations .number-quotations .number:hover{
+  background: var(--shadow);
+  color: var(--white);
+}
+.activeBtn{
+  background: var(--shadow);
+  color: var(--white);
+}
+
+.container-quotations .number-quotations .line{
+  width: 0.05rem;
+  height: 4rem;
+  background: var(--shadow);
+  margin: 0.5rem 0;
+}
+.quotations-img{
+  box-shadow: -2px 3px 26px -9px rgba(0,0,0,0.79);
+  border: 5px solid var(--white);
+  margin: 5rem 2rem;
+  width: 44rem;
+  display: flex; 
+  overflow: hidden; 
+  border-radius: 1rem;
+  background:white;
+}
+.quotations-img img{
+  width: 100%;
+  height: 28rem;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+.circle{
+  background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%,65%);
+  z-index: -1;
+}
+.content-quotations{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+.content-quotations .before-quotations{
+  line-height: 2;
+  font-size: 1.3rem;
+}
+.content-quotations .before-quotations::after{
+  content: "\201F";
+  font-size: 18rem;
+  position: absolute;
+  left: 0;
+  top: -210%;
+  z-index: -1;
+  color: #df8e8e;
+}
+.content-quotations .underlined{
+  width: 40%;
+  height: 0.5rem;
+  background: #a74b4b;
+  opacity: 0.8;
+  margin: 2rem 0 1rem 0;
+  text-align: right;
+  align-items: flex-end;
+}
+.content-quotations .author{
+  font-style: italic;
+  padding-left: 35rem;
+}
+
+@keyframes fade {
+  /* from {opacity: .4} 
+  to {opacity: 1;} */
+  0%{
+    opacity: .4;
+    left: -5%;
+  }
+  100%{
+    opacity: 1;
+    left: 0;
+  }
+}

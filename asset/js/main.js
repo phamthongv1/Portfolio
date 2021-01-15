@@ -1,3 +1,19 @@
+// DISABLE SCROLLBAR
+function disableScroll() {
+  // Get the current page scroll position
+  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  (scrollLeft = window.pageXOffset || document.documentElement.scrollLeft),
+    // if any scroll is attempted, set this to the previous value
+    (window.onscroll = function () {
+      window.scrollTo(scrollLeft, scrollTop);
+    });
+}
+disableScroll();
+
+setTimeout(function () {
+  window.onscroll = function () {};
+}, 8000);
+
 // TYPEWRITTING ANIMATION
 
 class TypeWriter {
@@ -70,11 +86,47 @@ function init() {
 
 const tl = gsap.timeline({ default: { ease: "power1.out" } });
 
-tl.to(".text", { y: "0%", duration: 1,stagger:0.25});
-tl.to(".slider",{y:"-100%",duration:1.5,delay:0.5});
-tl.to(".intro",{y:"-100%",duration:1},"-=1");
-tl.fromTo("nav",{opacity:0},{opacity:1,duration:1});
-tl.fromTo(".header-content",{opacity:0},{opacity:1,duration:1});
-tl.fromTo(".container-social",{opacity:0},{opacity:1,duration:1},"-=1.5");
+tl.to(".text", { y: "0%", duration: 1, stagger: 0.25 });
+tl.to(".slider", { y: "-100%", duration: 1.5, delay: 0.5 });
+tl.to(".intro", { y: "-100%", duration: 1 }, "-=1");
+tl.fromTo("nav", { opacity: 0 }, { opacity: 1, duration: 1 });
+tl.fromTo(".header-content", { opacity: 0 }, { opacity: 1, duration: 1 });
+tl.fromTo(
+  ".container-social",
+  { opacity: 0 },
+  { opacity: 1, duration: 1 },
+  "-=1.5"
+);
 
-//RIPPLE.JS
+//SLIDER
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides((slideIndex += n));
+}
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+}
+function showSlides(n) {
+  var i;
+  var slides = document.querySelectorAll(".quotations-img img");
+  var quotations = document.querySelectorAll(".content-quotations");
+  var numbers = document.querySelectorAll(".number");
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    quotations[i].style.display = "none";
+  }
+  for (i = 0; i < numbers.length; i++) {
+    numbers[i].className = numbers[i].className.replace(" activeBtn", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  quotations[slideIndex - 1].style.display = "block";
+  numbers[slideIndex - 1].className += " activeBtn";
+}
